@@ -57,11 +57,45 @@ Office, medical office, retail, shopping center / big box, restaurant, hotel, ap
 - **Official values.** Value is what the assessor publishes. Most areas publish market value. New York City publishes assessed value, about 45% of market. The `value_type` field says which.
 - New York City records have no owner mailing address or sale dates. North Carolina, Wisconsin and DC records have no building size.
 
-## Pricing
-
-You pay per row returned, plus a small fee per run. Set **Maximum results** or a spending limit and the run stops there.
-
 ## Tips
 
 - A whole state with all property types and no value floor can return tens of thousands of rows. Start with a value floor or a few cities.
 - Schedule a monthly run with **Last sold on or after** set to last month to get a steady list of new commercial property owners.
+
+## How much does it cost?
+
+**$4 per 1,000 properties** ($0.004 each), plus $0.005 per run. You pay only for properties returned.
+
+| You get | You pay |
+|---|---|
+| 100 properties | about $0.41 |
+| 1,000 properties | about $4.01 |
+| 5,000 properties | about $20.01 |
+
+Apify's free plan includes $5 of credit every month, which covers about 1,200 properties, so you can try it without paying anything. Set **Maximum results** or a spending limit and the run stops there.
+
+## FAQ
+
+**How do I find out who owns a commercial building?** Pick the area and property type. Each row has the owner's company name and mailing address from the county or state assessor's records.
+
+**Is this a Reonomy, CoStar or PropertyRadar alternative?** For owner lists, yes. Those cost hundreds a month; here you pay only for the properties returned, from the same public assessor data.
+
+**Can I find absentee or out-of-state owners?** Yes. Turn on Only out-of-state owners. You can also keep only owners with several properties to find portfolio owners.
+
+**Which states and cities are covered?** Massachusetts, Connecticut, North Carolina, Wisconsin, Minnesota (open-data counties), New York City, Philadelphia, Washington DC and Columbus OH. Ask for more in the Issues tab.
+
+**Can I export owner leads to Excel or my CRM?** Download as CSV, Excel or JSON, or send results to Google Sheets, HubSpot, Zapier or Make with Apify integrations.
+
+## Use it from your own tools
+
+Run it from the Apify API (see the API tab), on a schedule, or from Zapier, Make, n8n, Google Sheets and Slack integrations. Each run's results stay in a dataset you can download as CSV, Excel, JSON or XML.
+
+## More B2B lead lists from the same developer
+
+Same pricing, same clean one-row-per-company format:
+
+- [US Manufacturer & Machine Shop Leads](https://apify.com/habes22/fabricator-finder): metal fabricators and machine shops by capability (laser, CNC, welding)
+- [Construction Contractor & Subcontractor Finder](https://apify.com/habes22/construction-contractor-finder): commercial contractors and subs by trade
+- [Trucking Company & Carrier Leads (FMCSA)](https://apify.com/habes22/trucking-carrier-finder): trucking companies by cargo, fleet size and area, with safety data
+- [Medical Practice & Clinic Leads (NPI)](https://apify.com/habes22/medical-practice-leads): dental, medical and therapy practices by specialty
+- [Government Bids & RFPs (SAM.gov + State)](https://apify.com/habes22/gov-bids-finder): open federal, state and local bids for what you sell
