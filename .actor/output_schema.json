@@ -1,0 +1,18 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Commercial property owner leads output",
+    "properties": {
+        "results": {
+            "type": "string",
+            "title": "Property owner leads",
+            "description": "One row per property (or per owner).",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        },
+        "summary": {
+            "type": "string",
+            "title": "Run summary",
+            "description": "Records read and kept per area, and why rows were dropped.",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/RUN_SUMMARY"
+        }
+    }
+}

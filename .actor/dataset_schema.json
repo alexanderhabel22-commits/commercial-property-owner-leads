@@ -1,0 +1,145 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Properties",
+            "transformation": {
+                "fields": [
+                    "owner_name",
+                    "owner_mailing_address",
+                    "property_address",
+                    "city",
+                    "state",
+                    "property_type_label",
+                    "value_usd",
+                    "building_sqft",
+                    "year_built",
+                    "last_sale_date",
+                    "owner_property_count"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "owner_name": {
+                        "label": "Owner",
+                        "format": "text"
+                    },
+                    "owner_mailing_address": {
+                        "label": "Owner mailing address",
+                        "format": "text"
+                    },
+                    "property_address": {
+                        "label": "Property address",
+                        "format": "text"
+                    },
+                    "city": {
+                        "label": "City",
+                        "format": "text"
+                    },
+                    "state": {
+                        "label": "State",
+                        "format": "text"
+                    },
+                    "property_type_label": {
+                        "label": "Type",
+                        "format": "text"
+                    },
+                    "value_usd": {
+                        "label": "Value (USD)",
+                        "format": "number"
+                    },
+                    "building_sqft": {
+                        "label": "Building sq ft",
+                        "format": "number"
+                    },
+                    "year_built": {
+                        "label": "Built",
+                        "format": "number"
+                    },
+                    "last_sale_date": {
+                        "label": "Last sale",
+                        "format": "text"
+                    },
+                    "owner_property_count": {
+                        "label": "Owner's properties",
+                        "format": "number"
+                    }
+                }
+            }
+        },
+        "owners": {
+            "title": "Owners (when Output = one row per owner)",
+            "transformation": {
+                "fields": [
+                    "owner_name",
+                    "owner_mailing_address",
+                    "property_count",
+                    "total_value_usd",
+                    "total_building_sqft",
+                    "property_types",
+                    "states",
+                    "cities",
+                    "largest_property_address",
+                    "latest_purchase_date"
+                ]
+            },
+            "display": {
+                "component": "table"
+            }
+        },
+        "full": {
+            "title": "Full details",
+            "transformation": {
+                "fields": [
+                    "owner_name",
+                    "owner_type",
+                    "owner_name_2",
+                    "owner_care_of",
+                    "owner_mailing_address",
+                    "owner_mailing_street",
+                    "owner_mailing_city",
+                    "owner_mailing_state",
+                    "owner_mailing_zip",
+                    "owner_out_of_state",
+                    "owner_property_count",
+                    "owner_portfolio_value_usd",
+                    "property_address",
+                    "city",
+                    "county",
+                    "state",
+                    "zip",
+                    "latitude",
+                    "longitude",
+                    "distance_miles",
+                    "property_type",
+                    "property_type_label",
+                    "land_use_description",
+                    "land_use_code",
+                    "building_sqft",
+                    "lot_acres",
+                    "year_built",
+                    "floors",
+                    "units",
+                    "value_usd",
+                    "value_type",
+                    "land_value_usd",
+                    "building_value_usd",
+                    "last_sale_date",
+                    "last_sale_price_usd",
+                    "zoning",
+                    "parcel_id",
+                    "parcel_count",
+                    "source",
+                    "source_name",
+                    "source_url",
+                    "scraped_at"
+                ]
+            },
+            "display": {
+                "component": "table"
+            }
+        }
+    }
+}

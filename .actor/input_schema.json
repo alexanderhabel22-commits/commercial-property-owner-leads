@@ -1,0 +1,245 @@
+{
+    "title": "Find commercial property owners from public assessor records",
+    "description": "Pick the areas and kinds of property. The Actor reads official county and state parcel records, keeps buildings owned by companies (LLCs, corporations, REITs, partnerships), merges duplicate parcels and returns one row per property with the owner's name and mailing address, value, size, year built and last sale. Or switch to one row per owner to see who owns the most.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "areas": {
+            "title": "Areas",
+            "type": "array",
+            "description": "Where to search. Each area is one official public records source. Leave empty and set a ZIP code to pick areas near that ZIP automatically.",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "MA",
+                    "CT",
+                    "NC",
+                    "NYC",
+                    "PHILADELPHIA",
+                    "DC",
+                    "OH_FRANKLIN",
+                    "WI",
+                    "MN"
+                ],
+                "enumTitles": [
+                    "Massachusetts (statewide)",
+                    "Connecticut (statewide)",
+                    "North Carolina (statewide)",
+                    "New York City (5 boroughs)",
+                    "Philadelphia, PA",
+                    "Washington, DC",
+                    "Columbus, OH (Franklin County)",
+                    "Wisconsin (statewide)",
+                    "Minnesota (Minneapolis-St. Paul metro and other open-data counties)"
+                ]
+            },
+            "default": [
+                "MA"
+            ],
+            "prefill": [
+                "MA"
+            ]
+        },
+        "propertyTypes": {
+            "title": "Property types",
+            "type": "array",
+            "description": "Kinds of commercial property to return. Leave empty for every commercial type. Some areas only say \"commercial\" or \"industrial\" (Wisconsin, parts of Connecticut and Minnesota); those rows are typed \"Other / unspecified commercial\".",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "office",
+                    "medical_office",
+                    "retail",
+                    "shopping_center",
+                    "restaurant",
+                    "hotel",
+                    "multifamily",
+                    "mixed_use",
+                    "industrial",
+                    "warehouse",
+                    "self_storage",
+                    "auto",
+                    "parking",
+                    "healthcare",
+                    "bank",
+                    "entertainment",
+                    "other_commercial",
+                    "vacant_land"
+                ],
+                "enumTitles": [
+                    "Office buildings",
+                    "Medical offices & clinics",
+                    "Retail stores & service shops",
+                    "Shopping centers, malls & big-box stores",
+                    "Restaurants, bars & fast food",
+                    "Hotels & motels",
+                    "Apartment buildings (multifamily)",
+                    "Mixed-use (commercial + residential)",
+                    "Industrial & manufacturing",
+                    "Warehouses & distribution",
+                    "Self-storage",
+                    "Auto dealers, repair, gas stations & car washes",
+                    "Parking garages & lots",
+                    "Hospitals, nursing homes & senior living",
+                    "Banks",
+                    "Recreation, entertainment & clubs",
+                    "Other / unspecified commercial",
+                    "Vacant commercial & industrial land"
+                ]
+            },
+            "default": [
+                "office",
+                "industrial",
+                "warehouse"
+            ],
+            "prefill": [
+                "office",
+                "industrial",
+                "warehouse"
+            ]
+        },
+        "minValue": {
+            "title": "Minimum property value (USD)",
+            "type": "integer",
+            "description": "Official value published by the assessor. Most areas publish market value; New York City publishes assessed value (about 45% of market).",
+            "default": 2000000,
+            "prefill": 2000000,
+            "minimum": 0
+        },
+        "maxValue": {
+            "title": "Maximum property value (USD)",
+            "type": "integer",
+            "description": "Leave empty for no maximum.",
+            "minimum": 0
+        },
+        "cities": {
+            "title": "Cities or towns (optional)",
+            "type": "array",
+            "description": "Only these cities or towns, for example Boston, Cambridge. For New York City use a borough (Manhattan, Brooklyn...). Leave empty for the whole area.",
+            "editor": "stringList"
+        },
+        "zipCodes": {
+            "title": "ZIP codes (optional)",
+            "type": "array",
+            "description": "Only properties in these ZIP codes.",
+            "editor": "stringList"
+        },
+        "zipCode": {
+            "title": "Center ZIP code for a radius search (optional)",
+            "type": "string",
+            "description": "Search a radius around this ZIP code.",
+            "editor": "textfield",
+            "sectionCaption": "Radius search"
+        },
+        "radiusMiles": {
+            "title": "Radius in miles",
+            "type": "integer",
+            "description": "Used with the center ZIP code.",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 100
+        },
+        "minBuildingSqft": {
+            "title": "Minimum building size (sq ft)",
+            "type": "integer",
+            "description": "Only buildings at least this big. Areas that do not publish building size (North Carolina, Wisconsin, Washington DC) return nothing when this is set.",
+            "minimum": 0,
+            "sectionCaption": "Building and sale filters"
+        },
+        "yearBuiltFrom": {
+            "title": "Built in or after (year)",
+            "type": "integer",
+            "description": "Only buildings built in or after this year. Rows without a build year are dropped when set.",
+            "minimum": 1700,
+            "maximum": 2100
+        },
+        "yearBuiltTo": {
+            "title": "Built in or before (year)",
+            "type": "integer",
+            "description": "Only buildings built in or before this year, e.g. 1990 for older buildings that need upgrades.",
+            "minimum": 1700,
+            "maximum": 2100
+        },
+        "soldAfter": {
+            "title": "Last sold on or after",
+            "type": "string",
+            "description": "Only properties whose last recorded sale is on or after this date (YYYY-MM-DD). Great for finding new owners. New York City records have no sale dates.",
+            "editor": "datepicker"
+        },
+        "soldBefore": {
+            "title": "Last sold before",
+            "type": "string",
+            "description": "Only properties last sold before this date (YYYY-MM-DD), e.g. long-held properties.",
+            "editor": "datepicker"
+        },
+        "ownerTypes": {
+            "title": "Owner types",
+            "type": "array",
+            "description": "Which owners to keep. Individuals and personal trusts are never returned.",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "company",
+                    "nonprofit",
+                    "government",
+                    "religious"
+                ],
+                "enumTitles": [
+                    "Companies (LLCs, corporations, REITs, partnerships, business trusts)",
+                    "Nonprofits (universities, hospitals, foundations)",
+                    "Government (city, county, state, federal, authorities)",
+                    "Religious organizations"
+                ]
+            },
+            "default": [
+                "company",
+                "nonprofit"
+            ],
+            "sectionCaption": "Owner filters"
+        },
+        "absenteeOnly": {
+            "title": "Only out-of-state owners",
+            "type": "boolean",
+            "description": "Keep only properties whose owner mailing address is in another state.",
+            "default": false
+        },
+        "minOwnerProperties": {
+            "title": "Owner must hold at least this many properties",
+            "type": "integer",
+            "description": "Counted among the results of this run, e.g. 3 to find portfolio owners.",
+            "default": 1,
+            "minimum": 1
+        },
+        "outputMode": {
+            "title": "Output",
+            "type": "string",
+            "description": "One row per property, or one row per owner with their properties listed inside.",
+            "editor": "select",
+            "enum": [
+                "properties",
+                "owners"
+            ],
+            "enumTitles": [
+                "One row per property",
+                "One row per owner (portfolio view)"
+            ],
+            "default": "properties",
+            "sectionCaption": "Output"
+        },
+        "maxResults": {
+            "title": "Maximum results",
+            "type": "integer",
+            "description": "The most rows to return (and be charged for). Results are sorted by value, biggest first.",
+            "default": 1000,
+            "prefill": 1000,
+            "minimum": 1,
+            "maximum": 200000
+        }
+    },
+    "required": [
+        "areas"
+    ]
+}
