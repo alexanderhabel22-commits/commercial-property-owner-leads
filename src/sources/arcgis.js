@@ -32,7 +32,7 @@ export async function arcgisRequest(url, params, { timeoutMs = 90_000, retries =
             lastError = err;
             if (err.fatal || attempt === retries) break;
             const wait = 2000 * 2 ** attempt;
-            log?.debug?.(`ArcGIS request to ${new URL(url).host} failed (${err.message}); retrying in ${wait / 1000}s`);
+            log?.warning?.(`Request to ${new URL(url).host} failed (${err.message}); retrying in ${wait / 1000}s`);
             await sleep(wait);
         }
     }
@@ -70,7 +70,7 @@ export async function queryLayer(layerUrl, where, options = {}) {
     const oidField = idsRes.objectIdFieldName ?? 'OBJECTID';
     const batches = [];
     for (let i = 0; i < ids.length; i += batchSize) batches.push(ids.slice(i, i + batchSize));
-    log?.debug?.(`${layerUrl}: ${ids.length} matching records in ${batches.length} batches`);
+    log?.info?.(`${new URL(layerUrl).host}: ${ids.length} matching records, downloading in ${batches.length} batches`);
     let fetched = 0;
     await mapPool(batches, concurrency, async (batch) => {
         if (shouldStop()) return;

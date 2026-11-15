@@ -256,6 +256,7 @@ export async function collect(input, { log: logger = log, deadline = runDeadline
             st.dropped.city_not_in_area = 'skipped';
             return;
         }
+        logger.info(`${source.area}: searching ${source.label}`);
         const filters = { minValue: input.minValue, cities: input.cities, zips: input.zipCodes, bbox, propertyTypes: input.propertyTypes };
         try {
             await fetchSource(source, filters, {

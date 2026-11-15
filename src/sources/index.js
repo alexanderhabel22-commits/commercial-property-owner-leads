@@ -590,7 +590,7 @@ async function cartoQuery(url, q, log, retries = 4) {
             lastError = err;
             if (attempt === retries) break;
             const wait = 3000 * 2 ** attempt;
-            log?.debug?.(`Philadelphia query failed (${err.message}); retrying in ${wait / 1000}s`);
+            log?.warning?.(`Philadelphia query failed (${err.message}); retrying in ${wait / 1000}s`);
             await new Promise((r) => setTimeout(r, wait));
         }
     }
