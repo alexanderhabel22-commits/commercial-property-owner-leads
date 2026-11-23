@@ -35,10 +35,10 @@
                 ]
             },
             "default": [
-                "MA"
+                "OH_FRANKLIN"
             ],
             "prefill": [
-                "MA"
+                "OH_FRANKLIN"
             ]
         },
         "propertyTypes": {
@@ -234,7 +234,7 @@
             "type": "integer",
             "description": "The most rows to return (and be charged for). Results are sorted by value, biggest first.",
             "default": 1000,
-            "prefill": 1000,
+            "prefill": 100,
             "minimum": 1,
             "maximum": 200000
         }
