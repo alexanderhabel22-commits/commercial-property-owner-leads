@@ -11,12 +11,16 @@ Find out **who owns commercial buildings**: offices, warehouses, industrial plan
 
 ## What you get
 
-| owner_name | owner_mailing_address | property_address | city | property_type | value_usd | building_sqft | year_built | last_sale_date |
-|---|---|---|---|---|---|---|---|---|
-| Example Office Owner LLC | 100 Main St Ste 500, Boston, MA 02110 | 200 Example St | Cambridge, MA | office | 48,500,000 | 210,000 | 1987 | 2021-06-30 |
-| Example Logistics LP | PO Box 100, Dallas, TX 75201 | 55 Industrial Way | Charlotte, NC | warehouse | 12,700,000 | | 2019 | 2016-03-23 |
+The input form comes pre-filled with **offices, industrial buildings and warehouses worth $2M+ in Columbus, Ohio (Franklin County), 100 results**. Click Start and you get this kind of list in a few seconds, for about $0.41. These rows are from a test run on November 23, 2026:
 
-*(Illustrative rows.)* Every row also has: owner type, second owner and care-of company (when they are companies), whether the owner is out of state, **how many properties that owner holds in your results and their total value**, county, ZIP, latitude/longitude, the assessor's own land-use description and code, lot size, floors, units, land and building value, last sale price, zoning, parcel ID and a link to the source.
+| Owner | Type | Property address | City | Owner mailing city | Value | Building sq ft | Last sale |
+|---|---|---|---|---|---|---|---|
+| Magellan Enterprises LLC | industrial | 225 Rathmell Rd | Columbus | Scottsdale, AZ | $242.1M | 1,172,656 | 2022-06-08 |
+| Montauk Innovations LLC | industrial | 5266 Babbitt Rd | Plain | Wilmington, DE | $235.4M | 811,338 | 2018-12-13 |
+| Amazon Data Services Inc | industrial | 4580 - 4640 Cosgray Rd | Hilliard | Seattle, WA | $229.8M | 880,352 | 2022-10-18 |
+| Distribution Land Company LLC | warehouse | 1 - 3 Limited Pw | Columbus | OH | $125.0M | 1,935,173 | 2020-04-07 |
+
+Every row also has: owner type, second owner and care-of company (when they are companies), whether the owner is out of state, **how many properties that owner holds in your results and their total value**, county, ZIP, latitude/longitude, the assessor's own land-use description and code, lot size, floors, units, land and building value, last sale price, zoning, parcel ID and a link to the source.
 
 Switch **Output** to *one row per owner* to get a portfolio view: each owner with property count, total value, property types, cities, and their properties listed inside.
 
@@ -99,3 +103,4 @@ Same pricing, same clean one-row-per-company format:
 - [Trucking Company & Carrier Leads (FMCSA)](https://apify.com/habes22/trucking-carrier-finder): trucking companies by cargo, fleet size and area, with safety data
 - [Medical Practice & Clinic Leads (NPI)](https://apify.com/habes22/medical-practice-leads): dental, medical and therapy practices by specialty
 - [Government Bids & RFPs (SAM.gov + State)](https://apify.com/habes22/gov-bids-finder): open federal, state and local bids for what you sell
+- [Solar & Battery Installer Leads](https://apify.com/habes22/solar-installer-leads): US solar installers ranked by how many systems they really installed
